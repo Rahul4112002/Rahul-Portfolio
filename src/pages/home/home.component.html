@@ -1,0 +1,201 @@
+
+<!-- Hero Section -->
+<section id="home" class="hero min-h-screen flex items-center overflow-hidden">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div #revealEl class="hero-content md:w-1/2 text-center md:text-left mb-10 md:mb-0 reveal">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">Hi, I'm <span class="text-pink-500">Rahul Chauhan</span></h1>
+                <h2 class="text-2xl md:text-3xl font-light mb-6 text-cyan-400">AI & Backend Engineer</h2>
+                <p class="text-lg text-gray-400 mb-8">I build intelligent, responsive web apps using Python, Django, and AI/ML frameworks for real-world impact.</p>
+                <div class="hero-buttons flex justify-center md:justify-start space-x-4 mb-8">
+                    <a href="#contact" class="primary-btn text-white font-bold py-3 px-8 rounded-full shadow-lg">Contact Me</a>
+                    <a routerLink="/projects" class="secondary-btn font-bold py-3 px-8 rounded-full shadow-lg">View Projects</a>
+                </div>
+                <div class="social-icons flex justify-center md:justify-start space-x-6 text-3xl">
+                    <a href="https://github.com/Rahul4112002" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/rahul-chauhan-932522230" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:rahulchauhan4708@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div #revealEl class="hero-image md:w-1/2 flex justify-center items-center relative reveal">
+                 <div class="image-wrapper w-80 h-80 md:w-[450px] md:h-[450px]">
+                     <img src="https://raw.githubusercontent.com/Rahul4112002/my-portfolio/main/image3.png" alt="AI Engineer Icon" class="relative w-full h-full object-contain p-8 z-20">
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about py-20">
+    <div #revealEl class="container mx-auto px-6 reveal">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="about-image md:w-1/3">
+                <div class="image-container relative w-full h-full flex items-center justify-center">
+                    <div class="image-shape absolute w-full h-full bg-gradient-to-br from-pink-500 to-cyan-400 rounded-lg transform -rotate-6"></div>
+                    <img src="https://raw.githubusercontent.com/Rahul4112002/my-portfolio/main/image1.png" alt="About Rahul" class="relative rounded-lg shadow-2xl w-full z-10">
+                </div>
+            </div>
+            <div class="about-text md:w-2/3">
+                <h3 class="text-3xl font-bold mb-4 text-cyan-400">AI & Backend Engineer with a Passion for Intelligent Systems</h3>
+                <p class="text-lg text-gray-400 mb-4">I’m a highly motivated AI and Backend Engineer with strong expertise in Python, Django, Flask, and Machine Learning. I build scalable web applications that combine smart AI models with solid backend architecture.</p>
+                <p class="text-lg text-gray-400 mb-6">Currently pursuing a B.Tech in Artificial Intelligence and Data Science at TCET, Mumbai (CGPA 9.38). I love creating solutions that make data-driven decisions and provide real value to users.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                    <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-pink-500"></i><span>Mumbai, Maharashtra</span></div>
+                    <div class="flex items-center gap-3"><i class="fas fa-phone text-pink-500"></i><span>+91-8828489397</span></div>
+                    <div class="flex items-center gap-3 col-span-1 md:col-span-2"><i class="fas fa-envelope text-pink-500"></i><span>rahulchauhan4708@gmail.com</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills py-20 bg-gray-900">
+    <div #revealEl class="container mx-auto px-6 reveal">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">My Skills</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="space-y-12">
+            <!-- Programming Languages -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-6 text-cyan-400 text-center">Programming Languages</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center">
+                        <div class="text-5xl mb-4 text-pink-500"><i class="fab fa-python"></i></div>
+                        <h4 class="text-xl font-bold">Python</h4>
+                    </div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center">
+                        <div class="text-5xl mb-4 text-pink-500"><i class="fas fa-code"></i></div>
+                        <h4 class="text-xl font-bold">C++</h4>
+                    </div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center">
+                        <div class="text-5xl mb-4 text-pink-500"><i class="fas fa-database"></i></div>
+                        <h4 class="text-xl font-bold">SQL</h4>
+                    </div>
+                </div>
+            </div>
+             <!-- Frameworks & Technologies -->
+            <div>
+                 <h3 class="text-2xl font-semibold mb-6 text-cyan-400 text-center">Frameworks & Technologies</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-leaf"></i></div><h4 class="text-xl font-bold">Django</h4></div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-fire"></i></div><h4 class="text-xl font-bold">Flask</h4></div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-brain"></i></div><h4 class="text-xl font-bold">Machine Learning</h4></div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-robot"></i></div><h4 class="text-xl font-bold">Deep Learning</h4></div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-language"></i></div><h4 class="text-xl font-bold">NLP</h4></div>
+                    <div class="skill-item p-6 rounded-lg shadow-lg text-center"><div class="text-5xl mb-4 text-pink-500"><i class="fas fa-code-branch"></i></div><h4 class="text-xl font-bold">LangChain</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience py-20">
+    <div #revealEl class="container mx-auto px-6 reveal">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">Work Experience</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="max-w-3xl mx-auto">
+             <div class="timeline-item relative pl-8 pb-8">
+                 <div class="timeline-dot"></div>
+                 <div class="timeline-content bg-gray-800 p-6 rounded-lg shadow-lg">
+                     <div class="text-cyan-400 font-semibold mb-1">January 2025 - February 2025</div>
+                     <h3 class="text-xl font-bold text-pink-500">AI & Data Analytics Intern</h3>
+                     <h4 class="font-semibold mb-2">Skills4Future Program - AICTE & Shell India</h4>
+                     <ul class="list-disc list-inside text-gray-400 space-y-1">
+                         <li>Completed 4-week virtual internship focused on Green Skills in AI.</li>
+                         <li>Developed a Crop and Fertilizer Recommendation System using Machine Learning.</li>
+                         <li>Applied data analytics for environmentally sustainable agricultural solutions.</li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="timeline-item relative pl-8 pb-8">
+                 <div class="timeline-dot"></div>
+                 <div class="timeline-content bg-gray-800 p-6 rounded-lg shadow-lg">
+                     <div class="text-cyan-400 font-semibold mb-1">December 2023 - January 2024</div>
+                     <h3 class="text-xl font-bold text-pink-500">Machine Learning Intern</h3>
+                     <h4 class="font-semibold mb-2">CodSoft (Remote)</h4>
+                     <ul class="list-disc list-inside text-gray-400 space-y-1">
+                         <li>Built a Django web app to display real-time machine learning predictions.</li>
+                         <li>Processed datasets with 10,000+ rows, optimizing feature selection.</li>
+                         <li>Implemented models with TensorFlow and Scikit-learn.</li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Certifications Section -->
+<section id="certifications" class="certifications py-20 bg-gray-900">
+    <div #revealEl class="container mx-auto px-6 reveal">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">Certifications</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="skill-item p-6 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
+                <div class="text-5xl mb-4 text-pink-500"><i class="fab fa-python"></i></div>
+                <h3 class="font-semibold">Python 101 for Data Science - IBM</h3>
+            </div>
+            <div class="skill-item p-6 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
+                <div class="text-5xl mb-4 text-pink-500"><i class="fas fa-sitemap"></i></div>
+                <h3 class="font-semibold">Basics of DSA - Simplilearn</h3>
+            </div>
+            <div class="skill-item p-6 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
+                <div class="text-5xl mb-4 text-pink-500"><i class="fas fa-fire"></i></div>
+                <h3 class="font-semibold">Flask Python - Great Learning</h3>
+            </div>
+            <div class="skill-item p-6 rounded-lg shadow-lg text-center flex flex-col items-center justify-center">
+                <div class="text-5xl mb-4 text-pink-500"><i class="fas fa-database"></i></div>
+                <h3 class="font-semibold">Data Science Masters 2.0 - PW Skills</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact py-20">
+    <div #revealEl class="container mx-auto px-6 reveal">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">Contact Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="flex flex-col md:flex-row gap-12">
+            <div class="md:w-1/2">
+                <h3 class="text-3xl font-bold mb-4 text-cyan-400">Get In Touch</h3>
+                <p class="text-gray-400 mb-6">Feel free to contact me for any job opportunities or if you have any questions. I'll get back to you as soon as possible.</p>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4"><div class="text-2xl text-pink-500"><i class="fas fa-map-marker-alt"></i></div><p>Mumbai, Maharashtra, India</p></div>
+                    <div class="flex items-center gap-4"><div class="text-2xl text-pink-500"><i class="fas fa-envelope"></i></div><p>rahulchauhan4708@gmail.com</p></div>
+                    <div class="flex items-center gap-4"><div class="text-2xl text-pink-500"><i class="fas fa-phone"></i></div><p>+91-8828489397</p></div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <form (submit)="onFormSubmit($event)" id="contactForm" class="bg-gray-800 p-8 rounded-lg shadow-lg space-y-4">
+                    <div>
+                        <input type="text" id="name" placeholder="Your Name" required class="w-full bg-gray-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <input type="email" id="email" placeholder="Your Email" required class="w-full bg-gray-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    </div>
+                     <div>
+                        <input type="text" id="subject" placeholder="Subject" required class="w-full bg-gray-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <div>
+                        <textarea id="message" placeholder="Your Message" rows="5" required class="w-full bg-gray-700 text-white p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn w-full text-white font-bold py-3 px-8 rounded-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

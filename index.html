@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul Chauhan | AI & Backend Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d0d1a;
+            --bg-card: #1a1a2e;
+            --primary-accent: #e02f6b;
+            --secondary-accent: #00c4ff;
+            --text-light: #e0e0e0;
+            --text-medium: #a0a0c0;
+            --text-dark: #1a1a2e;
+            --gradient: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-card);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-accent);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-accent);
+        }
+
+        .section-header h2 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .underline {
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        /* Motion Animations */
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(1turn); }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle, rgba(26, 26, 46, 0.9) 0%, var(--bg-dark) 70%);
+        }
+        
+        .hero-image {
+             animation: floatAnimation 6s ease-in-out infinite;
+        }
+        
+        .image-wrapper {
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200%;
+            height: 200%;
+            z-index: 5;
+            background: conic-gradient(
+                from 0deg, 
+                var(--primary-accent), 
+                var(--secondary-accent) 30%, 
+                var(--primary-accent) 60%,
+                var(--secondary-accent) 85%,
+                var(--primary-accent)
+            );
+            animation: rotate 4s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            z-index: 10;
+            inset: 6px; /* Border thickness */
+            background: var(--bg-card);
+            border-radius: 50%;
+        }
+
+        .hero-image img {
+            z-index: 20;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .primary-btn {
+            background: var(--gradient);
+            transition: all 0.3s ease;
+        }
+        .primary-btn:hover {
+             box-shadow: 0 0 20px var(--primary-accent);
+             transform: translateY(-3px);
+        }
+        
+        .secondary-btn {
+            border: 2px solid var(--secondary-accent);
+            color: var(--secondary-accent);
+            transition: all 0.3s ease;
+        }
+        .secondary-btn:hover {
+            background-color: var(--secondary-accent);
+            color: var(--text-dark);
+            box-shadow: 0 0 20px var(--secondary-accent);
+            transform: translateY(-3px);
+        }
+
+        .social-icons a {
+            color: var(--text-medium);
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-accent);
+            transform: scale(1.2);
+        }
+        
+        /* Skills & Certifications Section */
+        .skill-item {
+            background-color: var(--bg-card);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary-accent);
+        }
+
+        /* Projects Section */
+        .project-card {
+            background-color: var(--bg-card);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-accent);
+        }
+        .project-img img {
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--bg-card);
+            top: 20px;
+            bottom: -20px;
+            left: 10px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 22px;
+            background: var(--gradient);
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+        }
+        
+        /* Header */
+        header {
+            background: rgba(13, 13, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "rxjs": "https://aistudiocdn.com/rxjs@^7.8.2?conditions=es2015",
+    "rxjs/operators": "https://aistudiocdn.com/rxjs@^7.8.2/operators?conditions=es2015",
+    "rxjs/ajax": "https://aistudiocdn.com/rxjs@^7.8.2/ajax?conditions=es2015",
+    "rxjs/webSocket": "https://aistudiocdn.com/rxjs@^7.8.2/webSocket?conditions=es2015",
+    "rxjs/testing": "https://aistudiocdn.com/rxjs@^7.8.2/testing?conditions=es2015",
+    "rxjs/fetch": "https://aistudiocdn.com/rxjs@^7.8.2/fetch?conditions=es2015",
+    "@angular/compiler": "https://next.esm.sh/@angular/compiler@^20.1.6-0?external=rxjs",
+    "@angular/platform-browser": "https://next.esm.sh/@angular/platform-browser@^20.1.6-0?external=rxjs",
+    "@angular/router": "https://next.esm.sh/@angular/router@^20.1.6-0?external=rxjs",
+    "@angular/core": "https://next.esm.sh/@angular/core@^20.1.6-0?external=rxjs"
+  }
+}
+</script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <app-root></app-root>
+</body>
+</html>

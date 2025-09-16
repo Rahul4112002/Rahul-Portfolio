@@ -22,7 +22,7 @@ export class ProjectsComponent {
   projects = signal<Project[]>([
     {
       title: 'RecipePro.ai',
-      image: 'recipe.png',
+  image: 'assets/recipe.png',
       tags: ['Django', 'LangChain', 'Gemini'],
       description: 'AI-powered recipe generator using Google Generative AI and LangChain for personalized cooking experiences.',
       repoUrl: 'https://github.com/Rahul4112002/RecipePro.ai',
@@ -30,7 +30,7 @@ export class ProjectsComponent {
     },
     {
       title: 'CareerVision.ai',
-      image: 'career.png',
+  image: 'assets/career.png',
       tags: ['Django', 'ML', 'Adzuna API'],
       description: 'Career prediction platform using ML to suggest suitable jobs and real-time listings based on user inputs.',
       repoUrl: 'https://github.com/Rahul4112002/CareerVision.ai',
@@ -38,7 +38,7 @@ export class ProjectsComponent {
     },
     {
       title: 'StockVision',
-      image: 'stock.png',
+  image: 'assets/stock.png',
       tags: ['Django', 'LSTM', 'Yahoo API'],
       description: 'Real-time stock trend forecasting platform using LSTM models and interactive chart visualizations.',
       repoUrl: 'https://github.com/Rahul4112002/StockVision',
@@ -54,7 +54,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Fake News Detection',
-      image: 'news.png',
+  image: 'assets/news.png',
       tags: ['NLP', 'ML'],
       description: 'Harnesses ML techniques to classify news articles as real or fake.',
       repoUrl: 'https://github.com/Rahul4112002/Fake-News-Detection',
@@ -62,7 +62,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Credit Card Fraud Detection',
-      image: 'card.png',
+  image: 'assets/card.png',
       tags: ['Random Forest'],
       description: 'ML model to detect fraud in credit card transactions using Random Forest.',
       repoUrl: 'https://github.com/Rahul4112002/CREDIT-CARD-FRAUD-DETECTION',
@@ -70,7 +70,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Customer Churn Prediction',
-      image: 'churn.png',
+  image: 'assets/churn.png',
       tags: ['Random Forest'],
       description: 'Predicting whether bank customers will stay or leave using Random Forest.',
       repoUrl: 'https://github.com/Rahul4112002/Customer-Churn-Prediction',
@@ -78,7 +78,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Forest Fire Prediction',
-      image: 'fire.png',
+  image: 'assets/fire.png',
       tags: ['ML', 'Predictive Modeling'],
       description: 'Predictive model to forecast forest fire occurrences based on environmental factors.',
       repoUrl: 'https://github.com/Rahul4112002/Forest-Fire-Precition',
@@ -86,7 +86,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Diabetes Prediction',
-      image: 'diabetes.png',
+  image: 'assets/diabetes.png',
       tags: ['Healthcare', 'Classification'],
       description: 'ML project that predicts whether a patient is diabetic based on health parameters.',
       repoUrl: 'https://github.com/Rahul4112002/Diabetes-Prediction',

@@ -1,0 +1,41 @@
+
+<section id="projects" class="projects py-20 min-h-screen">
+    <div class="container mx-auto px-6">
+        <div class="section-header text-center mb-12">
+            <h2 class="text-4xl font-bold">My Projects</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="projects-filter flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
+            @for(filter of filters; track filter) {
+                <button 
+                    (click)="setFilter(filter)"
+                    [class]="activeFilter() === filter ? 'primary-btn text-white' : 'secondary-btn'"
+                    class="px-4 py-2 rounded-full text-sm capitalize">
+                    {{ filter.replace('-', ' ') }}
+                </button>
+            }
+        </div>
+
+        <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @for(project of filteredProjects(); track project.title) {
+                <div class="project-card rounded-lg">
+                    <div class="project-img overflow-hidden h-56">
+                      <img [src]="project.image" [alt]="project.title" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">{{ project.title }}</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            @for(tag of project.tags; track tag) {
+                                <span class="bg-gray-700 text-xs px-2 py-1 rounded">{{ tag }}</span>
+                            }
+                        </div>
+                        <p class="text-gray-400 mb-4">{{ project.description }}</p>
+                        <a [href]="project.repoUrl" target="_blank" class="primary-btn text-white text-sm font-bold py-2 px-4 rounded-full inline-block">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

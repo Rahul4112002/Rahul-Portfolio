@@ -1,0 +1,26 @@
+
+<header class="sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="logo text-3xl font-bold">
+            <a routerLink="/home" (click)="closeMobileMenu()"><h1>Portfo<span class="text-pink-500">lio</span><span class="text-cyan-400">.</span></h1></a>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-lg">
+            <a routerLink="/home" routerLinkActive="text-pink-500" [routerLinkActiveOptions]="{exact: true}" class="hover:text-pink-500 transition duration-300">Home</a>
+            <a routerLink="/projects" routerLinkActive="text-pink-500" class="hover:text-pink-500 transition duration-300">Projects</a>
+            <a href="#contact" class="hover:text-pink-500 transition duration-300">Contact</a>
+        </nav>
+        <div class="md:hidden">
+            <button (click)="toggleMobileMenu()" id="hamburger" class="text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    <!-- Mobile Menu -->
+    @if (isMobileMenuOpen()) {
+        <div id="mobile-menu" class="md:hidden bg-gray-800 bg-opacity-90">
+            <a routerLink="/home" (click)="closeMobileMenu()" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
+            <a routerLink="/projects" (click)="closeMobileMenu()" class="block py-2 px-4 text-sm hover:bg-gray-700">Projects</a>
+            <a href="#contact" (click)="closeMobileMenu()" class="block py-2 px-4 text-sm hover:bg-gray-700">Contact</a>
+        </div>
+    }
+</header>

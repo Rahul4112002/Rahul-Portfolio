@@ -101,7 +101,7 @@ export default function AIChatbot() {
             </div>
             <div>
               <h3 className="font-semibold text-sm">AI Portfolio Assistant</h3>
-              <p className="text-xs opacity-80">Ask me about Rahul's work</p>
+              <p className="text-xs opacity-80">Ask me about Rahul&apos;s work</p>
             </div>
           </div>
           <button

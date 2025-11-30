@@ -5,7 +5,7 @@ const getLocalProjects = () => {
   const projectsPath = path.join(__dirname, "../src/data/projects.tsx");
   const projectsContent = fs.readFileSync(projectsPath, "utf8");
 
-  const projectsMatch = projectsContent.match(/export const projects = \[([\s\S]*?)\];/);
+  const projectsMatch = projectsContent.match(/export const allProjects: Project\[\] = \[([\s\S]*?)\];/);
   if (!projectsMatch) {
     throw new Error("Could not parse projects.tsx");
   }

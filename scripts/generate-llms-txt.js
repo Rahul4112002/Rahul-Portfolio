@@ -1,29 +1,31 @@
 const fs = require("fs");
 const path = require("path");
 
-const getLocalPosts = () => {
-  const postsPath = path.join(__dirname, "../src/data/posts.tsx");
-  const postsContent = fs.readFileSync(postsPath, "utf8");
+const getLocalProjects = () => {
+  const projectsPath = path.join(__dirname, "../src/data/projects.tsx");
+  const projectsContent = fs.readFileSync(projectsPath, "utf8");
 
-  const postsMatch = postsContent.match(/export const posts = \[([\s\S]*?)\];/);
-  if (!postsMatch) {
-    throw new Error("Could not parse posts.tsx");
+  const projectsMatch = projectsContent.match(/export const projects = \[([\s\S]*?)\];/);
+  if (!projectsMatch) {
+    throw new Error("Could not parse projects.tsx");
   }
 
-  const postsArrayContent = postsMatch[1];
+  const projectsArrayContent = projectsMatch[1];
 
-  const postRegex = /\{\s*title:\s*"([^"]+)",\s*slug:\s*"([^"]+)",/g;
-  const posts = [];
+  const projectRegex = /\{\s*title:\s*"([^"]+)",/g;
+  const projects = [];
   let match;
+  let index = 0;
 
-  while ((match = postRegex.exec(postsArrayContent)) !== null) {
-    posts.push({
+  while ((match = projectRegex.exec(projectsArrayContent)) !== null) {
+    projects.push({
       title: match[1],
-      slug: match[2],
+      slug: `project-${index}`,
     });
+    index++;
   }
 
-  return posts;
+  return projects;
 };
 
 const cleanMdxContent = (content) => {
@@ -41,51 +43,38 @@ const generateLlmsTxt = () => {
   try {
     console.log("🚀 Starting llms.txt generation...");
 
-    const posts = getLocalPosts();
-    console.log(`📄 Found ${posts.length} local blog posts`);
+    const projects = getLocalProjects();
+    console.log(`📄 Found ${projects.length} projects`);
 
     // Create llms directory in public/
-    const llmsDir = path.join(__dirname, "../public/blog");
+    const llmsDir = path.join(__dirname, "../public/projects");
     if (!fs.existsSync(llmsDir)) {
       fs.mkdirSync(llmsDir, { recursive: true });
     }
 
     // Start building the main llms.txt content
-    let llmsContent = `# Chirag Aggarwal's Blog Posts
+    let llmsContent = `# Rahul Chauhan's Projects
 
 `;
 
     let processedCount = 0;
 
-    for (const post of posts) {
+    for (const project of projects) {
       try {
-        const mdxPath = path.join(
-          __dirname,
-          `../src/app/blog/${post.slug}/page.mdx`,
-        );
+        // Generate individual .txt file for this project
+        const projectTxtPath = path.join(llmsDir, `${project.slug}.txt`);
+        const projectContent = `# ${project.title}
 
-        if (!fs.existsSync(mdxPath)) {
-          console.log(`⚠️  Skipping ${post.slug}: MDX file not found`);
-          continue;
-        }
+Project details available at https://rahul4112.me`;
 
-        const mdxContent = fs.readFileSync(mdxPath, "utf8");
-        const cleanedContent = cleanMdxContent(mdxContent);
-
-        // Generate individual .txt file for this post
-        const postTxtPath = path.join(llmsDir, `${post.slug}.txt`);
-        const postContent = `# ${post.title}
-
-${cleanedContent}`;
-
-        fs.writeFileSync(postTxtPath, postContent, "utf8");
+        fs.writeFileSync(projectTxtPath, projectContent, "utf8");
 
         // Add entry to main llms.txt
-        llmsContent += `- [${post.title}](https://chiragaggarwal.tech/blog/${post.slug}.txt)\n`;
+        llmsContent += `- [${project.title}](https://rahul4112.me/projects/${project.slug}.txt)\n`;
 
         processedCount++;
       } catch (error) {
-        console.error(`❌ Error processing ${post.slug}:`, error.message);
+        console.error(`❌ Error processing ${project.slug}:`, error.message);
       }
     }
 
@@ -94,7 +83,7 @@ ${cleanedContent}`;
     fs.writeFileSync(outputPath, llmsContent, "utf8");
 
     console.log(
-      `✅ Successfully generated llms.txt with ${processedCount} blog posts`,
+      `✅ Successfully generated llms.txt with ${processedCount} projects`,
     );
     console.log(`📍 Main file location: ${outputPath}`);
     console.log(`📍 Individual files location: ${llmsDir}\n`);

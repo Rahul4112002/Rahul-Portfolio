@@ -22,8 +22,8 @@ export default function Page() {
       <main className="flex items-center justify-center flex-col min-h-[100dvh] space-y-8 sm:space-y-10">
         <section id="hero" className="w-full">
           <div className="mx-auto w-full max-w-2xl space-y-6 sm:space-y-8">
-            <div className="gap-4 sm:gap-6 flex flex-col-reverse sm:flex-row sm:justify-between items-center">
-              <div className="flex-col flex flex-1 space-y-2 sm:space-y-1.5 text-center sm:text-left">
+            <div className="gap-4 sm:gap-6 flex flex-row justify-between items-center">
+              <div className="flex-col flex flex-1 space-y-2 sm:space-y-1.5 text-left">
                 <h1>
                   <BlurFadeText
                     delay={BLUR_FADE_DELAY}
@@ -39,9 +39,9 @@ export default function Page() {
                 />
               </div>
               <BlurFade delay={BLUR_FADE_DELAY}>
-                <div className="relative shrink-0 sm:-translate-y-2 sm:ml-6">
+                <div className="relative shrink-0 sm:-translate-y-2 ml-3 sm:ml-6">
                   <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-spin-slow"></div>
-                  <Avatar className="size-24 sm:size-28 md:size-32 relative bg-background hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 ease-in-out">
+                  <Avatar className="size-20 sm:size-28 md:size-32 relative bg-background hover:shadow-lg hover:shadow-foreground/20 transition-all duration-300 ease-in-out">
                     <AvatarImage alt={DATA.name} src={DATA.avatarUrl} className="rounded-full" />
                     <AvatarFallback>{DATA.initials}</AvatarFallback>
                   </Avatar>

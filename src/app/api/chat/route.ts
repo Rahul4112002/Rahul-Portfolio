@@ -124,6 +124,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if API key is available
+    if (!process.env.GROQ_API_KEY) {
+      console.error("GROQ_API_KEY is not set in environment variables");
+      return NextResponse.json(
+        { error: "API key not configured. Please contact the administrator." },
+        { status: 500 }
+      );
+    }
+
     // Use Groq API with llama-3.3-70b-versatile
     const chatCompletion = await groq.chat.completions.create({
       messages: [
@@ -144,10 +153,10 @@ export async function POST(req: NextRequest) {
     const response = chatCompletion.choices[0]?.message?.content || "Sorry, I couldn't generate a response.";
 
     return NextResponse.json({ response });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Chat API error:", error);
     return NextResponse.json(
-      { error: "Failed to process your request. Please try again." },
+      { error: `Failed to process request: ${error?.message || 'Unknown error'}` },
       { status: 500 }
     );
   }

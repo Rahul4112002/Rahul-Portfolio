@@ -78,30 +78,30 @@ export default function AIChatbot() {
       <button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "fixed bottom-6 right-6 z-50 rounded-full bg-primary text-primary-foreground p-4 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl ring-2 ring-primary/20",
+          "fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 rounded-full bg-primary text-primary-foreground p-3 sm:p-4 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl ring-2 ring-primary/20",
           isOpen && "hidden"
         )}
         aria-label="Open AI Assistant"
       >
-        <MessageCircle className="h-6 w-6" />
+        <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
       </button>
 
       {/* Chat Window */}
       <div
         className={cn(
-          "fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-lg border bg-background shadow-2xl transition-all duration-300",
+          "fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 flex h-[100dvh] sm:h-[500px] w-full sm:w-[380px] md:w-[420px] flex-col sm:rounded-lg border bg-background shadow-2xl transition-all duration-300",
           isOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"
         )}
       >
         {/* Header */}
-        <div className="flex items-center justify-between rounded-t-lg bg-primary text-primary-foreground p-4">
-          <div className="flex items-center gap-3">
-            <div className="rounded-full bg-primary-foreground/10 p-2">
-              <MessageCircle className="h-5 w-5" />
+        <div className="flex items-center justify-between sm:rounded-t-lg bg-primary text-primary-foreground p-3 sm:p-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="rounded-full bg-primary-foreground/10 p-1.5 sm:p-2">
+              <MessageCircle className="h-4 w-4 sm:h-5 sm:w-5" />
             </div>
             <div>
-              <h3 className="font-semibold text-sm">AI Portfolio Assistant</h3>
-              <p className="text-xs opacity-80">Ask me about Rahul&apos;s work</p>
+              <h3 className="font-semibold text-xs sm:text-sm">AI Portfolio Assistant</h3>
+              <p className="text-[10px] sm:text-xs opacity-80">Ask me about Rahul&apos;s work</p>
             </div>
           </div>
           <button
@@ -114,7 +114,7 @@ export default function AIChatbot() {
         </div>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -125,7 +125,7 @@ export default function AIChatbot() {
             >
               <div
                 className={cn(
-                  "max-w-[85%] rounded-lg px-4 py-2.5 text-sm whitespace-pre-wrap",
+                  "max-w-[85%] rounded-lg px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm whitespace-pre-wrap",
                   message.role === "user"
                     ? "bg-primary text-primary-foreground"
                     : "bg-muted text-muted-foreground border border-border"
@@ -137,8 +137,8 @@ export default function AIChatbot() {
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-muted border border-border rounded-lg px-4 py-2">
-                <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+              <div className="bg-muted border border-border rounded-lg px-3 sm:px-4 py-2">
+                <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin text-muted-foreground" />
               </div>
             </div>
           )}
@@ -146,22 +146,23 @@ export default function AIChatbot() {
         </div>
 
         {/* Input */}
-        <div className="border-t p-4 bg-muted/30">
+        <div className="border-t p-3 sm:p-4 bg-muted/30">
           <div className="flex gap-2">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
-              placeholder="Ask about skills, projects, experience..."
-              className="flex-1"
+              placeholder="Ask about skills, projects..."
+              className="flex-1 text-xs sm:text-sm"
               disabled={isLoading}
             />
             <Button
               onClick={handleSend}
               disabled={!input.trim() || isLoading}
               size="icon"
+              className="h-9 w-9 sm:h-10 sm:w-10"
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-3 w-3 sm:h-4 sm:w-4" />
             </Button>
           </div>
         </div>

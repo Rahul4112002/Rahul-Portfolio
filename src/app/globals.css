@@ -76,6 +76,18 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Responsive improvements */
+  @media (max-width: 640px) {
+    .prose {
+      font-size: 0.875rem;
+    }
+    
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
 }
 
 h3 code {

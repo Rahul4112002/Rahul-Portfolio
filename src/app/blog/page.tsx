@@ -1,17 +1,59 @@
 "use client";
 import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
-import { allProjects, projectCategories, ProjectCategory } from "@/data/projects";
-import { useState } from "react";
+import { allProjects, projectCategories, ProjectCategory, type Project } from "@/data/projects";
+import { useState, useEffect } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("All");
+  const [allProjectsList, setAllProjectsList] = useState<Project[]>(allProjects);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load admin-added projects on mount
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const response = await fetch('/api/admin/projects');
+        if (response.ok) {
+          const data = await response.json();
+          const adminProjects = (data.projects || []).map((p: any) => ({
+            title: p.title,
+            href: p.source_link,
+            dates: new Date(p.created_at).getFullYear().toString(),
+            active: true,
+            description: p.description,
+            technologies: [],
+            links: [
+              ...(p.source_link ? [{
+                type: "Source",
+                href: p.source_link,
+                icon: <span className="size-3">🔗</span>,
+              }] : []),
+              ...(p.live_link ? [{
+                type: "Website",
+                href: p.live_link,
+                icon: <span className="size-3">🌐</span>,
+              }] : [])
+            ],
+            image: p.image_url || "/placeholder-project.png",
+            category: [p.category as ProjectCategory],
+          }));
+          setAllProjectsList([...allProjects, ...adminProjects]);
+        }
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadProjects();
+  }, []);
 
   const filteredProjects = selectedCategory === "All" 
-    ? allProjects 
-    : allProjects.filter(project => project.category.includes(selectedCategory));
+    ? allProjectsList 
+    : allProjectsList.filter(project => project.category.includes(selectedCategory));
 
   return (
     <section className="mx-8">
@@ -45,31 +87,42 @@ export default function ProjectsPage() {
       </BlurFade>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto">
-        {filteredProjects.map((project, id) => (
-          <BlurFade
-            key={project.title}
-            delay={BLUR_FADE_DELAY * 3 + id * 0.05}
-          >
-            <ProjectCard
-              href={project.href}
-              title={project.title}
-              description={project.description}
-              dates={project.dates}
-              tags={project.technologies}
-              image={project.image}
-              links={project.links}
-            />
-          </BlurFade>
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="flex min-h-[400px] items-center justify-center">
+          <div className="text-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary border-r-transparent"></div>
+            <p className="mt-4 text-muted-foreground">Loading projects...</p>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto">
+            {filteredProjects.map((project, id) => (
+              <BlurFade
+                key={`${project.title}-${id}`}
+                delay={BLUR_FADE_DELAY * 3 + id * 0.05}
+              >
+                <ProjectCard
+                  href={project.href}
+                  title={project.title}
+                  description={project.description}
+                  dates={project.dates}
+                  tags={project.technologies}
+                  image={project.image}
+                  links={project.links}
+                />
+              </BlurFade>
+            ))}
+          </div>
 
-      {filteredProjects.length === 0 && (
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
-          <p className="text-center text-muted-foreground my-12">
-            No projects found in this category.
-          </p>
-        </BlurFade>
+          {filteredProjects.length === 0 && (
+            <BlurFade delay={BLUR_FADE_DELAY * 3}>
+              <p className="text-center text-muted-foreground my-12">
+                No projects found in this category.
+              </p>
+            </BlurFade>
+          )}
+        </>
       )}
 
       <BlurFade delay={BLUR_FADE_DELAY * 3 + filteredProjects.length * 0.05}>

@@ -70,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased max-w-4xl mx-auto py-12 sm:py-24",

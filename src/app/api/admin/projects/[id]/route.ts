@@ -7,7 +7,7 @@ import { existsSync } from "fs";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     // Verify authentication
@@ -21,6 +21,7 @@ export async function DELETE(
       );
     }
 
+    const params = await context.params;
     const projectId = parseInt(params.id);
     const projectsFile = join(process.cwd(), "data", "admin-projects.json");
 

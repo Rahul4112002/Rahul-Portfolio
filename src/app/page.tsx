@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Marquee from "@/components/ui/marquee";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { ProjectsSection } from "@/components/projects-section";
 import { DATA } from "@/data/resume";
 import { Notebook } from "lucide-react";
 import Image from "next/image";
@@ -141,39 +142,7 @@ export default function Page() {
         </section>
         <section id="projects" className="w-full">
           <div className="space-y-8 sm:space-y-12 w-full py-8 sm:py-12">
-            <BlurFade delay={BLUR_FADE_DELAY * 11}>
-              <div className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 text-center px-4">
-                <div className="space-y-2">
-                  <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl">
-                    Projects
-                  </h2>
-                  <p className="text-sm sm:text-base text-muted-foreground md:text-lg lg:text-xl max-w-[600px]">
-                    I like to build projects. I have built a lot of projects,
-                    here are just some of my{" "}
-                    <span className="font-bold">favorites</span>.
-                  </p>
-                </div>
-              </div>
-            </BlurFade>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto px-4">
-              {DATA.projects.map((project, id) => (
-                <BlurFade
-                  key={project.title}
-                  delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-                >
-                  <ProjectCard
-                    href={project.href}
-                    key={project.title}
-                    title={project.title}
-                    description={project.description}
-                    dates={project.dates}
-                    tags={project.technologies}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </div>
+            <ProjectsSection delay={BLUR_FADE_DELAY * 11} />
           </div>
         </section>
         <section id="positions" className="w-full">
@@ -216,7 +185,7 @@ export default function Page() {
         </section>
         <section id="achievements" className="w-full">
           <div className="space-y-8 sm:space-y-12 w-full py-8 sm:py-12">
-            <BlurFade delay={BLUR_FADE_DELAY * 13}>
+            <BlurFade delay={BLUR_FADE_DELAY * 16}>
               <div className="flex flex-col items-center justify-center space-y-3 sm:space-y-4 text-center px-4">
                 <div className="space-y-2">
                   <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl">
@@ -229,7 +198,7 @@ export default function Page() {
                 </div>
               </div>
             </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+            <BlurFade delay={BLUR_FADE_DELAY * 17}>
               <Marquee>
                 {[...DATA.achievements].sort(() => Math.random() - 0.5).map((achievement, id) => (
                   <div key={`${achievement.title}-${achievement.image}-${id}`}>
@@ -252,7 +221,7 @@ export default function Page() {
         </section>
         <section id="contact" className="w-full">
           <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-8 sm:py-12">
-            <BlurFade delay={BLUR_FADE_DELAY * 16}>
+            <BlurFade delay={BLUR_FADE_DELAY * 18}>
               <div className="space-y-4 sm:space-y-6">
                 <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl">
                   Get in Touch

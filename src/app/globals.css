@@ -168,3 +168,13 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .animate-spin-slow {
   animation: spin-slow 3s linear infinite;
 }
+
+/* Hide scrollbar for category sliders */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

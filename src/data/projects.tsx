@@ -1,6 +1,6 @@
 import { Icons } from "@/components/icons";
 
-export type ProjectCategory = "All" | "Gen AI" | "Full Stack" | "Machine Learning" | "Deep Learning" | "NLP";
+export type ProjectCategory = "All" | "AI Agents" | "Generative AI" | "Machine Learning" | "Python" | "Gen AI" | "Full Stack" | "Deep Learning" | "NLP";
 
 export interface Project {
   title: string;
@@ -259,7 +259,45 @@ export const allProjects: Project[] = [
   },
 ];
 
-export const projectCategories: ProjectCategory[] = ["All", "Gen AI", "Full Stack", "Machine Learning", "Deep Learning", "NLP"];
+export const projectCategories: ProjectCategory[] = ["All", "AI Agents", "Generative AI", "Machine Learning", "Python", "Gen AI", "Full Stack", "Deep Learning", "NLP"];
+
+// Projects organized by new categories
+export const aiAgentsProjects = allProjects.filter(p => 
+  p.technologies.some(t => t.toLowerCase().includes('langgraph') || t.toLowerCase().includes('agent')) ||
+  p.title.toLowerCase().includes('agent') ||
+  p.description.toLowerCase().includes('agent')
+);
+
+export const generativeAIProjects = allProjects.filter(p => 
+  p.category.includes('Gen AI') ||
+  p.technologies.some(t => 
+    t.toLowerCase().includes('langchain') || 
+    t.toLowerCase().includes('gemini') || 
+    t.toLowerCase().includes('rag') ||
+    t.toLowerCase().includes('genai') ||
+    t.toLowerCase().includes('llm')
+  )
+);
+
+export const machineLearningProjects = allProjects.filter(p => 
+  p.category.includes('Machine Learning') ||
+  p.technologies.some(t => 
+    t.toLowerCase().includes('machine learning') || 
+    t.toLowerCase().includes('random forest') ||
+    t.toLowerCase().includes('classification') ||
+    t.toLowerCase().includes('prediction')
+  )
+);
+
+export const pythonProjects = allProjects.filter(p => 
+  p.technologies.some(t => 
+    t.toLowerCase().includes('python') || 
+    t.toLowerCase().includes('django') || 
+    t.toLowerCase().includes('flask') ||
+    t.toLowerCase().includes('fastapi') ||
+    t.toLowerCase().includes('streamlit')
+  )
+);
 
 // Load admin-added projects from API
 export async function getAdminProjects(): Promise<Project[]> {

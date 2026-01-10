@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { allProjects, type Project } from "@/data/projects";
+import { allProjects, type Project, ProjectCategory } from "@/data/projects";
 import BlurFade from "@/components/magicui/blur-fade";
 
 const categories = [
@@ -18,10 +18,10 @@ const categories = [
   { id: "nlp", label: "NLP" },
 ];
 
-function filterProjects(categoryId: string): Project[] {
-  if (categoryId === "all") return allProjects;
+function filterProjects(projects: Project[], categoryId: string): Project[] {
+  if (categoryId === "all") return projects;
 
-  return allProjects.filter((project) => {
+  return projects.filter((project) => {
     const techs = project.technologies.map((t) => t.toLowerCase());
     const desc = project.description.toLowerCase();
     const title = project.title.toLowerCase();
@@ -137,6 +137,7 @@ interface ProjectsSectionProps {
 
 export function ProjectsSection({ delay = 0 }: ProjectsSectionProps) {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [allProjectsList, setAllProjectsList] = useState<Project[]>(allProjects);
   const [filteredProjects, setFilteredProjects] = useState<Project[]>(allProjects);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -146,14 +147,53 @@ export function ProjectsSection({ delay = 0 }: ProjectsSectionProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Load admin-added projects on mount
   useEffect(() => {
-    setFilteredProjects(filterProjects(activeCategory));
+    async function loadAdminProjects() {
+      try {
+        const response = await fetch('/api/admin/projects');
+        if (response.ok) {
+          const data = await response.json();
+          const adminProjects: Project[] = (data.projects || []).map((p: any) => ({
+            title: p.title,
+            href: p.source_link,
+            dates: new Date(p.created_at).getFullYear().toString(),
+            active: true,
+            description: p.description,
+            technologies: [],
+            links: [
+              ...(p.source_link ? [{
+                type: "Source",
+                href: p.source_link,
+                icon: <span className="size-3">🔗</span>,
+              }] : []),
+              ...(p.live_link ? [{
+                type: "Website",
+                href: p.live_link,
+                icon: <span className="size-3">🌐</span>,
+              }] : [])
+            ],
+            image: p.image_url || "",
+            category: [p.category as ProjectCategory],
+          }));
+          setAllProjectsList([...allProjects, ...adminProjects]);
+        }
+      } catch (error) {
+        console.error('Error loading admin projects:', error);
+      }
+    }
+    loadAdminProjects();
+  }, []);
+
+  // Update filtered projects when category or allProjectsList changes
+  useEffect(() => {
+    setFilteredProjects(filterProjects(allProjectsList, activeCategory));
     setCurrentIndex(0);
     // Reset scroll position when category changes
     if (scrollRef.current) {
       scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
     }
-  }, [activeCategory]);
+  }, [activeCategory, allProjectsList]);
 
   const checkScrollButtons = () => {
     if (scrollRef.current) {

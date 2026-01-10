@@ -2,11 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { sessions } from "@/lib/sessions";
 
-// Match categories from src/data/projects.tsx
+// Match categories from src/data/projects.tsx - All 9 categories (excluding "All")
 const CATEGORIES = [
+  "AI Agents",
+  "Generative AI",
+  "Machine Learning",
+  "Python",
   "Gen AI",
   "Full Stack",
-  "Machine Learning",
   "Deep Learning",
   "NLP"
 ];

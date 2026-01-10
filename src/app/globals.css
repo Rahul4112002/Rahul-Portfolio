@@ -73,16 +73,17 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
-  
+
   /* Responsive improvements */
   @media (max-width: 640px) {
     .prose {
       font-size: 0.875rem;
     }
-    
+
     .badge {
       font-size: 0.75rem;
       padding: 0.25rem 0.5rem;
@@ -106,7 +107,7 @@ code {
   @apply text-sm md:text-base !leading-loose;
 }
 
-pre > code {
+pre>code {
   counter-reset: line;
 }
 
@@ -117,6 +118,7 @@ code[data-theme*=" "] span {
 }
 
 @media (prefers-color-scheme: dark) {
+
   code[data-theme*=" "],
   code[data-theme*=" "] span {
     color: var(--shiki-dark);
@@ -128,7 +130,7 @@ code[data-line-numbers] {
   counter-reset: line;
 }
 
-code[data-line-numbers] > [data-line]::before {
+code[data-line-numbers]>[data-line]::before {
   counter-increment: line;
   content: counter(line);
   @apply inline-block w-4 mr-4 text-right text-gray-500;
@@ -138,7 +140,7 @@ code {
   counter-reset: line;
 }
 
-code > [data-line]::before {
+code>[data-line]::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -148,11 +150,11 @@ code > [data-line]::before {
   color: gray;
 }
 
-code[data-line-numbers-max-digits="2"] > [data-line]::before {
+code[data-line-numbers-max-digits="2"]>[data-line]::before {
   width: 2rem;
 }
 
-code[data-line-numbers-max-digits="3"] > [data-line]::before {
+code[data-line-numbers-max-digits="3"]>[data-line]::before {
   width: 3rem;
 }
 
@@ -160,6 +162,7 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -177,4 +180,105 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Floating Particle Animation */
+@keyframes float-particle {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.3;
+  }
+
+  25% {
+    transform: translateY(-15px) translateX(5px);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(-25px) translateX(-5px);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: translateY(-10px) translateX(8px);
+    opacity: 0.7;
+  }
+}
+
+/* Gradient Animation for Glowing Borders */
+@keyframes gradient-xy {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 400% 400%;
+  animation: gradient-xy 3s ease infinite;
+}
+
+/* Card Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Glow Pulse Animation */
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: blur(20px);
+  }
+
+  50% {
+    opacity: 0.8;
+    filter: blur(25px);
+  }
+}
+
+/* Float Animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Smooth 3D transforms */
+.transform-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
